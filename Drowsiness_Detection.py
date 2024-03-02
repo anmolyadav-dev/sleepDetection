@@ -107,13 +107,14 @@ while True:
     
     if(mincount>5):  #for every 36 seconds of unattentiveness a alert will be notified on the screen
         majorcount+=1;
+        print("Minor Alert: Please be Attentive.")
         sound = pygame.mixer.Sound('assets/alertSound.mp3')
         sound.play()
         mincount=0
 
     if(majorcount>2): #for every 3 minutes of untattentiveness a mail will be sent 
         print("Sending mail...\nPlease be Attentive.")
-        SendEmail("darkSavour1@gmail.com")
+        SendEmail("codelyf2@gmail.com")
         print("Mail Sent.")
         break
         
