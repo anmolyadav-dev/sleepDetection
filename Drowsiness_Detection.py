@@ -30,7 +30,8 @@ start_time1=time.time()
 seconds = 0
 secondsFace=0
 n=0
-count=0
+mincount=0
+majorcount=0
 while True:
     ret, frame=cap.read()
     frame = imutils.resize(frame, width=450)
@@ -68,8 +69,8 @@ while True:
                 #print ("Drowsy")
                 
             if (int(closed_eye_time) % 6==0) and (int(closed_eye_time) > seconds):
-                count+=1
-                print(count)
+                mincount+=1
+                print(mincount)
                 
                 
         else:
@@ -90,8 +91,8 @@ while True:
                 cv2.putText(frame, "****************ALERT!****************", (10,325),
                             cv2.FONT_HERSHEY_SIMPLEX, 0.7, (0, 0, 255), 2)
         if (int(nofaceTime) % 6==0) and (int(nofaceTime) > secondsFace):
-                count+=1
-                print(count)
+                mincount+=1
+                print(mincount)
                 
         
 
@@ -104,14 +105,20 @@ while True:
         
     seconds = int(closed_eye_time) 
     
-    if(count>2):
+    if(mincount>5):  #for every 36 seconds of unattentiveness a alert will be notified on the screen
+        majorcount+=1;
         sound = pygame.mixer.Sound('assets/alertSound.mp3')
         sound.play()
+        mincount=0
+
+    if(majorcount>2): #for every 3 minutes of untattentiveness a mail will be sent 
+        print("Sending mail...\nPlease be Attentive.")
         SendEmail("darkSavour1@gmail.com")
-        count=0
+        print("Mail Sent.")
+        break
         
     if(int(time.time() - start_time1)%60==0):
-         count=0
+         mincount=0
 
 
     cv2.imshow("Frame", frame)
