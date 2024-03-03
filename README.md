@@ -33,8 +33,15 @@ install dependencies
     
 ## Demo
 
-Insert gif or link to demo
-
+Video Link  
+```bash
+  https://drive.google.com/file/d/1KHgbkC1_sGy4bnrkCHIxleGvCTDwAQBN/view?usp=drive_link
+```
+## Final Presentation
+```bash
+  https://docs.google.com/presentation/d/1Pgxkxbdf23ugHPgi3AgxiamFIUQgodPX/edit?usp=drive_link&ouid=111492798728562164278&rtpof=true&sd=true
+```
+**Frontend part is under development -- Core script is completed and working correctly**
 
 ## Mandatory Files
 - shape_predictor_68_face_landmarks.dat
